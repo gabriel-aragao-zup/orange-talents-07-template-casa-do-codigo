@@ -1,5 +1,7 @@
 package br.com.zup.codehouse.autor;
 
+import br.com.zup.codehouse.shared.config.validation.beanvalidation.uniquevalue.UniqueValue;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -12,6 +14,7 @@ public class FormAutor {
 
     @NotBlank
     @Email
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
 
     @NotBlank

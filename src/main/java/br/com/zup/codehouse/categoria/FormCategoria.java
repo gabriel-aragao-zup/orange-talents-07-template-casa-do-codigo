@@ -1,12 +1,13 @@
 package br.com.zup.codehouse.categoria;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import br.com.zup.codehouse.shared.config.validation.beanvalidation.uniquevalue.UniqueValue;
 
-public class FormCategoria {
+import javax.validation.constraints.NotBlank;
+
+public class FormCategoria{
 
     @NotBlank
+    @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
     public Categoria toModel(){

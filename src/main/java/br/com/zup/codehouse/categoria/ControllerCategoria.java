@@ -11,17 +11,12 @@ import javax.validation.Valid;
 public class ControllerCategoria {
 
     private RepositoryCategoria repositoryCategoria;
-    private UniqueNomeValidator nomeValidator;
 
-    public ControllerCategoria(RepositoryCategoria repositoryCategoria, UniqueNomeValidator emailValidator){
+    public ControllerCategoria(RepositoryCategoria repositoryCategoria){
         this.repositoryCategoria = repositoryCategoria;
-        this.nomeValidator = emailValidator;
     }
 
-    @InitBinder
-    public void init(WebDataBinder binder){
-        binder.addValidators(nomeValidator);
-    }
+
 
     @PostMapping
     public ResponseEntity<Categoria> createCategoria(@RequestBody @Valid FormCategoria formCategoria){

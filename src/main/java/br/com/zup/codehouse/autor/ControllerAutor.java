@@ -14,16 +14,9 @@ import java.net.URI;
 public class ControllerAutor {
 
     private RepositoryAutor repositoryAutor;
-    private UniqueEmailValidator emailValidator;
 
-    public ControllerAutor(RepositoryAutor repositoryAutor, UniqueEmailValidator emailValidator){
+    public ControllerAutor(RepositoryAutor repositoryAutor){
         this.repositoryAutor = repositoryAutor;
-        this.emailValidator = emailValidator;
-    }
-
-    @InitBinder
-    public void init(WebDataBinder binder){
-        binder.addValidators(emailValidator);
     }
 
     @PostMapping
