@@ -18,7 +18,8 @@ public class Autor {
     private String descricao;
     private LocalDateTime createdAt;
 
-    private Autor(){
+    @Deprecated
+    public Autor(){
     }
 
     public Autor(String nome, String email, String descricao) {

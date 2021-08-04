@@ -10,8 +10,8 @@ public class Categoria {
     private long id;
     private String nome;
 
-
-    private Categoria(){
+    @Deprecated
+    public Categoria(){
     }
 
     public Categoria(String nome) {

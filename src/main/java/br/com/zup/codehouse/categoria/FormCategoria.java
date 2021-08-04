@@ -14,6 +14,9 @@ public class FormCategoria{
         return new Categoria(this.nome);
     }
 
+    /*
+     * esse setter foi criado por uma limitação no jackson de desserializar JSONs com apenas um atributo através de um construtor.
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
