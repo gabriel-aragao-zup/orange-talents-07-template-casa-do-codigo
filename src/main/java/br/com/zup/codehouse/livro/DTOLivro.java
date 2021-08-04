@@ -11,21 +11,11 @@ import java.time.LocalDate;
 public class DTOLivro {
     private Long id;
     private String titulo;
-    private BigDecimal preco;
-    private int paginas;
-    private String isbn;
-    private String categoriaNome;
-    private String autorNome;
 
-    public DTOLivro(Long id, String titulo, BigDecimal preco, int paginas,
-                    String isbn, String categoriaNome, String autorNome) {
+
+    public DTOLivro(Long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
-        this.preco = preco;
-        this.paginas = paginas;
-        this.isbn = isbn;
-        this.categoriaNome = categoriaNome;
-        this.autorNome = autorNome;
     }
 
     public Long getId() {
@@ -36,23 +26,4 @@ public class DTOLivro {
         return titulo;
     }
 
-    public BigDecimal getPreco() {
-        return preco;
-    }
-
-    public int getPaginas() {
-        return paginas;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public String getCategoriaNome() {
-        return categoriaNome;
-    }
-
-    public String getAutorNome() {
-        return autorNome;
-    }
 }

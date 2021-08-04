@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/livros")
@@ -29,5 +31,12 @@ public class ControllerLivro {
         repositoryLivro.save(livro);
         DTOLivro dtoLivro = livro.toDTO();
         return ResponseEntity.ok().body(dtoLivro);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<DTOLivro>> getAll(){
+        List<Livro> livros = repositoryLivro.findAll();
+        List<DTOLivro> dtoLivros = livros.stream().map(Livro::toDTO).collect(Collectors.toList());
+        return ResponseEntity.ok().body(dtoLivros);
     }
 }

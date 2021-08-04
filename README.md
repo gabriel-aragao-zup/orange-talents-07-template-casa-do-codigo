@@ -83,10 +83,27 @@ Acredito que essas validações devem estar nas migrations, então coloca-las no
 A partir dessa release decidi mapear todas as decisões no mesmo README pra dar uma ideia melhor de cronologia as decisões tomadas e aos problemas encontrados por conta dessas decisões
 
 ## Erros encontrados por decisões tomadas em releases anteriores
+
+### Métodos set
 Corrigi forms das releases anteriores que continham métodos set, para que eles tivessem apenas construtores ja que entendi um pouco melhor esse conceito de Design by Contract, e sobre a mutabilidade possibilitada pelos setters.
 
+### Construtores padrão
 Corrigi os construtores dos models que estavam private para public e deprecated pois recebi um erro dizendo que os construtores padrões desses objetos não existiam quando tentei cadastrar um livro.
 
 ## Decisões tomadas nessa release
+
+### DTO Livro
 Decidi criar um DTO para o retorno do cadastro do livro, não exibindo as informações de resumo e sumário, data de publicação, e retornar no lugar do ids de categoria e autor os respectivos nomes.
+
+# Release exibir-lista-livro
+
+## Erros encontrados por decisões tomadas em releases anteriores
+
+### Mudança no DTO
+
+O DTO que escolhi utilizar na última release exibe mais informações que o solicitado nessa release, então decidi altera-lo para exibir apenas as informações requisitadas.
+
+
+
+
 

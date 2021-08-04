@@ -45,7 +45,7 @@ public class Livro {
     }
 
     public DTOLivro toDTO(){
-        return new DTOLivro(this.id, this.titulo, this.preco, this.paginas, this.isbn, this.categoria.getNome(), this.autor.getNome());
+        return new DTOLivro(this.id, this.titulo);
     }
     public Long getId() {
         return id;
