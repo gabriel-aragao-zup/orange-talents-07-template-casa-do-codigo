@@ -2,12 +2,14 @@ package br.com.zup.codehouse.livro;
 
 import br.com.zup.codehouse.autor.RepositoryAutor;
 import br.com.zup.codehouse.categoria.RepositoryCategoria;
+import br.com.zup.codehouse.shared.config.validation.beanvalidation.existsid.ExistsId;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -26,17 +28,27 @@ public class ControllerLivro {
     }
 
     @PostMapping
-    public ResponseEntity<DTOLivro> createLivro(@RequestBody @Valid @NotNull FormLivro formLivro){
+    public ResponseEntity<DTOLivroResumo> createLivro(@RequestBody @Valid @NotNull FormLivro formLivro){
         Livro livro = formLivro.toModel(this.repositoryAutor, this.repositoryCategoria);
         repositoryLivro.save(livro);
-        DTOLivro dtoLivro = livro.toDTO();
+        DTOLivroResumo dtoLivro = livro.toResumoDTO();
         return ResponseEntity.ok().body(dtoLivro);
     }
 
     @GetMapping
-    public ResponseEntity<List<DTOLivro>> getAll(){
+    public ResponseEntity<List<DTOLivroResumo>> getAll(){
         List<Livro> livros = repositoryLivro.findAll();
-        List<DTOLivro> dtoLivros = livros.stream().map(Livro::toDTO).collect(Collectors.toList());
+        List<DTOLivroResumo> dtoLivros = livros.stream().map(Livro::toResumoDTO).collect(Collectors.toList());
         return ResponseEntity.ok().body(dtoLivros);
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<DTOLivroDetalhe> getLivroById(@PathVariable Long id){
+        Optional<Livro> livro = repositoryLivro.findById(id);
+        if(livro.isPresent()){
+            DTOLivroDetalhe dtoLivroDetalhe = livro.get().toDetalheDTO();
+            return ResponseEntity.ok().body(dtoLivroDetalhe);
+        }
+        return ResponseEntity.notFound().build();
     }
 }

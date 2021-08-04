@@ -103,7 +103,13 @@ Decidi criar um DTO para o retorno do cadastro do livro, não exibindo as inform
 
 O DTO que escolhi utilizar na última release exibe mais informações que o solicitado nessa release, então decidi altera-lo para exibir apenas as informações requisitadas.
 
+# Release exibir-detalhes-livro
 
+## Erros encontrados por decisões tomadas em releases anteriores
+
+### Mudança no DTO
+
+Nesta release decidi criar dois DTOs um para exibir apenas as informações requisitadas na lista, e outro com as informações de detalhes.
 
 
 

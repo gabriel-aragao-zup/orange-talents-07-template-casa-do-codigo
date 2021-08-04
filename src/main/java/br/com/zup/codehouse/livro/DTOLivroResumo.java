@@ -8,12 +8,12 @@ import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class DTOLivro {
+public class DTOLivroResumo {
     private Long id;
     private String titulo;
 
 
-    public DTOLivro(Long id, String titulo) {
+    public DTOLivroResumo(Long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
     }
