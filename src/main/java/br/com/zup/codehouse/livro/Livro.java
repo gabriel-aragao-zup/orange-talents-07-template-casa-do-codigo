@@ -44,15 +44,6 @@ public class Livro {
         this.autor = autor;
     }
 
-    public DTOLivroResumo toResumoDTO(){
-        return new DTOLivroResumo(this.id, this.titulo);
-    }
-
-    public DTOLivroDetalhe toDetalheDTO(){
-        return new DTOLivroDetalhe(this.titulo, this.resumo, this.sumario,
-                this.preco, this.paginas, this.isbn, this.autor.getNome());
-    }
-
     public Long getId() {
         return id;
     }

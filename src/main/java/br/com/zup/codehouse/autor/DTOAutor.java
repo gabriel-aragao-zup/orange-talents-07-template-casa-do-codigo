@@ -12,10 +12,14 @@ public class DTOAutor {
     private String nome;
     private String descricao;
 
-    public DTOAutor(Long id, String nome, String descricao){
+    private DTOAutor(Long id, String nome, String descricao){
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+    }
+
+    public static DTOAutor from(Autor autor){
+        return new DTOAutor(autor.getId(), autor.getNome(), autor.getDescricao());
     }
 
     public long getId() {

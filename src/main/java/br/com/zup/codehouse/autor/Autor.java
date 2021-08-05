@@ -33,10 +33,6 @@ public class Autor {
         this.createdAt = LocalDateTime.now();
     }
 
-    public DTOAutor toDTO(){
-        return new DTOAutor(this.id, this.nome, this.descricao);
-    }
-
     public long getId() {
         return id;
     }

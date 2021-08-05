@@ -111,5 +111,13 @@ O DTO que escolhi utilizar na última release exibe mais informações que o sol
 
 Nesta release decidi criar dois DTOs um para exibir apenas as informações requisitadas na lista, e outro com as informações de detalhes.
 
+# Release pais-estado
 
+## Erros encontrados por decisões tomadas em releases anteriores
 
+### Metodos toDTO nos objetos de domínio
+Percebi que havia encapsulado a logica de mapeamento do objeto de domínio para o dto de resposta dentro do objeto de domínio, e não faz sentido que meu objeto de domínio conheça uma classe de resposta da api mas sim ao contrário. Por isso decidi refatorar essa parte do código
+
+### Injeção por construtor não funciona para validator
+
+Tentei injetar o validador do init binder via construtor mas a validação não ocorreu, quando injetei via @Autowired. funcionou como deveria. 

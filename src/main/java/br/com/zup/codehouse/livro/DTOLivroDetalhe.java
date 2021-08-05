@@ -18,7 +18,7 @@ public class DTOLivroDetalhe {
     private String isbn;
     private String autor;
 
-    public DTOLivroDetalhe(String titulo, String resumo, String sumario,
+    private DTOLivroDetalhe(String titulo, String resumo, String sumario,
                            BigDecimal preco, int paginas, String isbn, String autor) {
         this.titulo = titulo;
         this.resumo = resumo;
@@ -27,6 +27,11 @@ public class DTOLivroDetalhe {
         this.paginas = paginas;
         this.isbn = isbn;
         this.autor = autor;
+    }
+
+    public static DTOLivroDetalhe from (Livro livro){
+        return new DTOLivroDetalhe(livro.getTitulo(), livro.getResumo(), livro.getSumario(),
+                livro.getPreco(), livro.getPaginas(), livro.getIsbn(), livro.getAutor().getNome());
     }
 
     public String getTitulo() {

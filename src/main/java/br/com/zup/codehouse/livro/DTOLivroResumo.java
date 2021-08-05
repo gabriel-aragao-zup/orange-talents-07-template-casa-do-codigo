@@ -13,11 +13,14 @@ public class DTOLivroResumo {
     private String titulo;
 
 
-    public DTOLivroResumo(Long id, String titulo) {
+    private DTOLivroResumo(Long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
     }
 
+    public static DTOLivroResumo from (Livro livro){
+        return new DTOLivroResumo(livro.getId(), livro.getTitulo());
+    }
     public Long getId() {
         return id;
     }

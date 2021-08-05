@@ -52,7 +52,6 @@ public class FormLivro {
         this.preco = preco;
         this.paginas = paginas;
         this.isbn = isbn;
-        this.dataPublicacao = dataPublicacao;
         this.categoriaId = categoriaId;
         this.autorId = autorId;
     }
@@ -60,6 +59,7 @@ public class FormLivro {
     public Livro toModel(RepositoryAutor repositoryAutor, RepositoryCategoria repositoryCategoria){
         Autor autor = repositoryAutor.getById(this.autorId);
         Categoria categoria = repositoryCategoria.getById(this.categoriaId);
+
 
         return new Livro(this.titulo, this.resumo, this.sumario, this.preco, this.paginas, this.isbn, this.dataPublicacao, categoria, autor);
     }

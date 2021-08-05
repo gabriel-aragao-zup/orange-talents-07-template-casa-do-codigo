@@ -20,7 +20,7 @@ public class ControllerAutor {
     public ResponseEntity<DTOAutor> createAutor(@RequestBody @Valid @NotNull FormAutor formAutor){
         Autor autor = formAutor.toModel();
         repositoryAutor.save(autor);
-        DTOAutor dtoAutor = autor.toDTO();
+        DTOAutor dtoAutor = DTOAutor.from(autor);
         return ResponseEntity.ok().body(dtoAutor);
     }
 }

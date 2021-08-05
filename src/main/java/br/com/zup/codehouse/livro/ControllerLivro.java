@@ -31,14 +31,14 @@ public class ControllerLivro {
     public ResponseEntity<DTOLivroResumo> createLivro(@RequestBody @Valid @NotNull FormLivro formLivro){
         Livro livro = formLivro.toModel(this.repositoryAutor, this.repositoryCategoria);
         repositoryLivro.save(livro);
-        DTOLivroResumo dtoLivro = livro.toResumoDTO();
+        DTOLivroResumo dtoLivro = DTOLivroResumo.from(livro);
         return ResponseEntity.ok().body(dtoLivro);
     }
 
     @GetMapping
     public ResponseEntity<List<DTOLivroResumo>> getAll(){
         List<Livro> livros = repositoryLivro.findAll();
-        List<DTOLivroResumo> dtoLivros = livros.stream().map(Livro::toResumoDTO).collect(Collectors.toList());
+        List<DTOLivroResumo> dtoLivros = livros.stream().map(DTOLivroResumo::from).collect(Collectors.toList());
         return ResponseEntity.ok().body(dtoLivros);
     }
 
@@ -46,7 +46,7 @@ public class ControllerLivro {
     public ResponseEntity<DTOLivroDetalhe> getLivroById(@PathVariable Long id){
         Optional<Livro> livro = repositoryLivro.findById(id);
         if(livro.isPresent()){
-            DTOLivroDetalhe dtoLivroDetalhe = livro.get().toDetalheDTO();
+            DTOLivroDetalhe dtoLivroDetalhe = DTOLivroDetalhe.from(livro.get());
             return ResponseEntity.ok().body(dtoLivroDetalhe);
         }
         return ResponseEntity.notFound().build();
