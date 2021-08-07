@@ -121,3 +121,18 @@ Percebi que havia encapsulado a logica de mapeamento do objeto de domínio para 
 ### Injeção por construtor não funciona para validator
 
 Tentei injetar o validador do init binder via construtor mas a validação não ocorreu, quando injetei via @Autowired. funcionou como deveria. 
+
+
+# fluxo-pagamento
+
+## Erros que n~]ao encontrei explicação
+
+### Jackson não consegue desserializar objeto via construtor
+
+Ocorreu algum problema quando tentei cadastrar um cliente e o form não tinha setters para os atributos, o jackson não conseguia desserializar meu json e pegava os campos sem setter como null, a gambiarra temporaria que encontrei foi colocar setters para essa classe. 
+
+### getById() não aceita falta do campo no JSON
+
+O metodo getById gerou um erro quando o campo de estado não estava presente no json da request, buscando pelo erro descobri que o causador do erro era o método em questão e que subistituilo pelo findById().get() "resolveria" o problema entçao foi essa a abordagem que utililzei.
+
+
